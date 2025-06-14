@@ -6,14 +6,14 @@ import java.util.Map;
 class Stage {
 	
 	private Map<String, Integer> stageObjectInfo;
-	private int enemyCount;
-	private int enemyInterval;
+	private int enemySpawnCounter;
+	private int enemySpawnInterval;
 	
 	Stage(){
 		stageObjectInfo = new HashMap<>();;
 		stageObjectInfo.put("enemy", 10);
-		enemyCount = 0;
-		enemyInterval = 200;
+		enemySpawnCounter = 0;
+		enemySpawnInterval = 200;
 	}
 	
 	Stage(Map<String, Integer> stageObjectInfo){
@@ -24,12 +24,12 @@ class Stage {
 		return stageObjectInfo;
 	}
 	
-	final boolean isEnemyInterval(int count) {
-		return count >= enemyCount;
+	final boolean isEnemySpawnInterval(int count) {
+		return count >= enemySpawnCounter;
 	}
 	
-	final void updateEnemyCount() {
-		enemyCount = enemyCount + enemyInterval;
+	final void updateEnemySpawnCounter() {
+		enemySpawnCounter = enemySpawnCounter + enemySpawnInterval;
 	}
 	
 	

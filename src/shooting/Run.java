@@ -36,11 +36,11 @@ class Run {
 		render.sortGameObject();
 		int count = 0;
 		while(true) {
-			if(stage.isEnemyInterval(count)) {
+			if(stage.isEnemySpawnInterval(count)) {
 				for(GameObject object : manager.getGameObjects()) {
 					if(!object.isRenderable() && object instanceof Enemy) {
 						object.setIsRenderable(true);
-						stage.updateEnemyCount();
+						stage.updateEnemySpawnCounter();
 						break;
 					}
 				}

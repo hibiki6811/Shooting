@@ -1,4 +1,4 @@
-package shooting2;
+package shooting;
 
 import java.awt.Image;
 import java.io.IOException;

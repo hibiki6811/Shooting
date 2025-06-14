@@ -1,8 +1,10 @@
-package shooting2;
+package shooting;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import object.GameObject;
 
 class Stage {
 	
@@ -45,7 +47,6 @@ class Stage {
 					if(!object.isRenderable()) {
 						object.setIsRenderable(true);
 						count = 0;
-						System.out.println("aa");
 					}
 				}
 			}

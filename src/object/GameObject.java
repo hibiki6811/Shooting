@@ -1,6 +1,6 @@
-package shooting2;
+package object;
 
-abstract class GameObject {
+public abstract class GameObject {
 	
 	private String imageName;
 	private String type;
@@ -11,7 +11,7 @@ abstract class GameObject {
 	private int depth;
 	private boolean isRenderable;
 
-	GameObject(String imageName, int x, int y, int width, int height, int depth) {
+	public GameObject(String imageName, int x, int y, int width, int height, int depth) {
 		this.imageName = imageName;
 		this.x = x;
 		this.y = y;
@@ -22,7 +22,7 @@ abstract class GameObject {
 		isRenderable = false;
 	}
 	
-	GameObject(String imageName, int x, int y, int width, int height, int depth, String type) {
+	public GameObject(String imageName, int x, int y, int width, int height, int depth, String type) {
 		this.imageName = imageName;
 		this.x = x;
 		this.y = y;
@@ -33,72 +33,72 @@ abstract class GameObject {
 		isRenderable = false;
 	}
 	
-	final String getImageName() {
+	public final String getImageName() {
 		return imageName;
 	}
 	
-	final void setImageName(String name) {
+	public final void setImageName(String name) {
 		this.imageName = name;
 	}
 	
-	final String getType() {
+	public final String getType() {
 		return type;
 	}
 	
-	final void setType(String type) {
+	public final void setType(String type) {
 		this.type = type;
 	}
 	
-	final int getX() {
+	public final int getX() {
 		return x;
 	}
 	
-	final void setX(int x) {
+	public final void setX(int x) {
 		this.x = x;
 	}
 	
-	final int getY() {
+	public final int getY() {
 		return y;
 	}
 	
-	final void setY(int y) {
+	public final void setY(int y) {
 		this.y = y;
 	}
 	
-	final int getWidth() {
+	public final int getWidth() {
 		return width;
 	}
 	
-	final void setWidth(int width) {
+	public final void setWidth(int width) {
 		this.width = width;
 	}
 	
-	final int getHeight() {
+	public final int getHeight() {
 		return height;
 	}
 	
-	final void setHeight(int height) {
+	public final void setHeight(int height) {
 		this.height = height;
 	}
 	
-	final int getDepth() {
+	public final int getDepth() {
 		return depth;
 	}
 	
-	final void setDepth(int depth) {
+	public final void setDepth(int depth) {
 		this.depth = depth;
 	}
 	
-	final boolean isRenderable() {
+	public final boolean isRenderable() {
 		return isRenderable;
 	}
 	
-	final void setIsRenderable(boolean b) {
+	public final void setIsRenderable(boolean b) {
 		isRenderable = b;
 	}
 	
-	abstract void move();
+	public abstract void move();
 	
-	abstract void initialize();
+	public abstract void initialize();
 	
 }

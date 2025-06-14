@@ -1,4 +1,4 @@
-package shooting2;
+package shooting;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

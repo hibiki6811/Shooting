@@ -1,7 +1,9 @@
-package shooting2;
+package shooting;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import object.GameObject;
 
 class GameObjectManager {
 	
@@ -40,6 +42,12 @@ class GameObjectManager {
 	final void moveAllGameObjects() {
 		for(GameObject object : gameObjects) {
 			object.move();
+		}
+	}
+	
+	final void initializeAllGameObjects() {
+		for(GameObject object : gameObjects) {
+			object.initialize();
 		}
 	}
 	

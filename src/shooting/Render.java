@@ -1,4 +1,4 @@
-package shooting2;
+package shooting;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JPanel;
+
+import object.GameObject;
 
 class Render {
 	

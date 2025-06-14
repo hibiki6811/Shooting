@@ -1,4 +1,9 @@
-package shooting2;
+package shooting;
+
+import factory.BackFactory;
+import factory.EnemyFactory;
+import factory.GameObjectFactory;
+import factory.PlayerFactory;
 
 class Run {
 	
@@ -22,7 +27,9 @@ class Run {
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
-		manager.showAllGameObjects();
+		manager.addGameObject(enemyFactory.createGameObject());
+		manager.addGameObject(enemyFactory.createGameObject());
+		manager.initializeAllGameObjects();
 		render.setRenderGameObject(manager.getGameObjects());
 		render.sortGameObject();
 		stage.gameSet(manager.getGameObjects());

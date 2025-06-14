@@ -5,7 +5,6 @@ class Run {
 	private MyFrame myFrame;
 	private Render render;
 	private GameObjectManager manager;
-	private GameObjectFactory factory;
 	
 	Run(MyFrame myFrame, Render render, GameObjectManager manager){
 		this.myFrame = myFrame;

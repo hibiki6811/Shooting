@@ -18,7 +18,10 @@ class Run {
 		Stage stage = new Stage();
 		manager.addGameObject(new BackFactory().createGameObject());
 		manager.addGameObject(new PlayerFactory().createGameObject());
-		manager.addGameObject(new EnemyFactory().createGameObject());
+		GameObjectFactory enemyFactory = new EnemyFactory();
+		manager.addGameObject(enemyFactory.createGameObject());
+		manager.addGameObject(enemyFactory.createGameObject());
+		manager.addGameObject(enemyFactory.createGameObject());
 		manager.showAllGameObjects();
 		render.setRenderGameObject(manager.getGameObjects());
 		render.sortGameObject();

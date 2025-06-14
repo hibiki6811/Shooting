@@ -45,6 +45,7 @@ class Stage {
 					if(!object.isRenderable()) {
 						object.setIsRenderable(true);
 						count = 0;
+						System.out.println("aa");
 					}
 				}
 			}

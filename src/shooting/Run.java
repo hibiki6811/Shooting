@@ -36,10 +36,13 @@ class Run {
 		render.sortGameObject();
 		int count = 0;
 		while(true) {
-			for(GameObject object : manager.getGameObjects()) {
-				if(stage.isEnemyInterval(count) && !object.isRenderable() && object instanceof Enemy) {
-					object.setIsRenderable(true);
-					stage.updateEnemyCount();
+			if(stage.isEnemyInterval(count)) {
+				for(GameObject object : manager.getGameObjects()) {
+					if(!object.isRenderable() && object instanceof Enemy) {
+						object.setIsRenderable(true);
+						stage.updateEnemyCount();
+						break;
+					}
 				}
 			}
 			manager.moveAllGameObjects();

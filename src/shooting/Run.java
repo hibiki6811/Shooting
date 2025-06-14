@@ -4,6 +4,8 @@ import factory.BackFactory;
 import factory.EnemyFactory;
 import factory.GameObjectFactory;
 import factory.PlayerFactory;
+import object.Enemy;
+import object.GameObject;
 
 class Run {
 	
@@ -32,10 +34,17 @@ class Run {
 		manager.initializeAllGameObjects();
 		render.setRenderGameObject(manager.getGameObjects());
 		render.sortGameObject();
-		stage.gameSet(manager.getGameObjects());
+		int count = 0;
 		while(true) {
-			stage.gameFlow(manager.getGameObjects());
+			for(GameObject object : manager.getGameObjects()) {
+				if(stage.isEnemyInterval(count) && !object.isRenderable() && object instanceof Enemy) {
+					object.setIsRenderable(true);
+					stage.updateEnemyCount();
+				}
+			}
+			manager.moveAllGameObjects();
 			render.rendering();
+			count ++;
 			try {
 				Thread.sleep(16);
 			} catch (InterruptedException e) {

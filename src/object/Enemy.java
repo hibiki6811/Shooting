@@ -8,9 +8,11 @@ public class Enemy extends GameObject{
 	
 	@Override
 	public final void move() {
-		int y = getY();
-		y ++;
-		setY(y);
+		if(isRenderable()) {
+			int y = getY();
+			y ++;
+			setY(y);
+		}
 	}
 	
 	@Override

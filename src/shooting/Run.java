@@ -39,7 +39,8 @@ class Run {
 			if(stage.isEnemySpawnInterval(count)) {
 				for(GameObject object : manager.getGameObjects()) {
 					if(!object.isRenderable() && object instanceof Enemy) {
-						object.setIsRenderable(true);
+						Enemy enemy = (Enemy)object;
+						enemy.spawn();
 						stage.updateEnemySpawnCounter();
 						break;
 					}

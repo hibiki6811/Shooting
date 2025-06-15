@@ -97,8 +97,8 @@ public abstract class GameObject {
 		isRenderable = b;
 	}
 	
-	public abstract void move();
-	
 	public abstract void initialize();
+	
+	public abstract void move();
 	
 }

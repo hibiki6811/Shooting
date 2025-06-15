@@ -23,4 +23,8 @@ class MyFrame {
 		jFrame.add(panel);
 	}
 	
+	final void setOperation(Operation operation) {
+		jFrame.addKeyListener(operation);
+	}
+	
 }

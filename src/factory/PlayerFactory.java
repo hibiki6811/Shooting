@@ -4,10 +4,17 @@ import object.GameObject;
 import object.Player;
 
 public class PlayerFactory extends GameObjectFactory{
+	
+	private Player player;
 
 	@Override
 	public final GameObject createGameObject() {
-		return new Player();
+		player = new Player();
+		return player;
+	}
+	
+	public final Player getObject() {
+		return player;
 	}
 	
 }

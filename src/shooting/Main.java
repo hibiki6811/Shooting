@@ -1,11 +1,9 @@
 package shooting;
 
-import javax.swing.JFrame;
-
 public class Main {
 	
 	public static void main(String[] args) {
-		Run run = new Run(new MyFrame(new JFrame()), new Render(new ImageReader()), new GameObjectManager());
+		Run run = new Run();
 		run.runGame();
 	}
 

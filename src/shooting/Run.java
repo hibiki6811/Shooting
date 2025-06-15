@@ -1,5 +1,7 @@
 package shooting;
 
+import javax.swing.JFrame;
+
 import factory.BackFactory;
 import factory.EnemyFactory;
 import factory.GameObjectFactory;
@@ -13,10 +15,10 @@ class Run {
 	private Render render;
 	private GameObjectManager manager;
 	
-	Run(MyFrame myFrame, Render render, GameObjectManager manager){
-		this.myFrame = myFrame;
-		this.render = render;
-		this.manager = manager;
+	Run(){
+		this.myFrame = new MyFrame(new JFrame());
+		this.render = new Render(new ImageReader());
+		this.manager = new GameObjectManager();
 	}
 
 	final void runGame() {
@@ -24,7 +26,9 @@ class Run {
 		myFrame.setPanel(render.getPanel());
 		Stage stage = new Stage();
 		manager.addGameObject(new BackFactory().createGameObject());
-		manager.addGameObject(new PlayerFactory().createGameObject());
+		PlayerFactory playerFactory = new PlayerFactory();
+		manager.addGameObject(playerFactory.createGameObject());
+		myFrame.setOperation(new Operation(playerFactory.getObject()));
 		GameObjectFactory enemyFactory = new EnemyFactory();
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());

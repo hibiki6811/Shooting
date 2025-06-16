@@ -30,11 +30,9 @@ public class Bullet extends GameObject{
 	}
 	
 	public void spawn(int x, int y) {
-		if(!isRenderable()) {
 			setX(x + 13);
 			setY(y);
 			setIsRenderable(true);
-		}
 	}
 	
 	

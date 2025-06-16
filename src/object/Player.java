@@ -71,7 +71,7 @@ public class Player extends GameObject{
 		this.isFire = isFire;
 	}
 	
-	public final boolean isBulletSpawnInterval() {
+	public final boolean isBulletSpawn() {
 		boolean isBulletSpawnInterval;
 		if(isFire) {
 			isBulletSpawnInterval = bulletSpawnCounter % bulletSpawnInterval == 0;

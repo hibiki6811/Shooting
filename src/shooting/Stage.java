@@ -24,13 +24,10 @@ class Stage {
 		return stageObjectInfo;
 	}
 	
-	final boolean isEnemySpawnInterval(int count) {
-		return count >= enemySpawnCounter;
+	final boolean isEnemySpawn() {
+		boolean isEnemySpawn = enemySpawnCounter % enemySpawnInterval == 0;
+		enemySpawnCounter++;
+		return isEnemySpawn;
 	}
-	
-	final void updateEnemySpawnCounter() {
-		enemySpawnCounter = enemySpawnCounter + enemySpawnInterval;
-	}
-	
 	
 }

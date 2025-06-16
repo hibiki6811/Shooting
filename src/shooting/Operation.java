@@ -8,17 +8,17 @@ import object.Player;
 public class Operation implements KeyListener{
 
 	private boolean upPressed;
-	private boolean downPressed;
-	private boolean leftPressed;
-	private boolean rightPressed;
-	private boolean spacePressed;
+	private boolean isDownPressed;
+	private boolean isLeftPressed;
+	private boolean isRightPressed;
+	private boolean isSpacePressed;
 	
 	Operation(){
 		upPressed = false;
-		downPressed = false;
-		leftPressed = false;
-		rightPressed = false;
-		spacePressed = false;
+		isDownPressed = false;
+		isLeftPressed = false;
+		isRightPressed = false;
+		isSpacePressed = false;
 	}
 
 	@Override
@@ -33,16 +33,16 @@ public class Operation implements KeyListener{
 	        	upPressed = true;
 	        	break;
 	        case KeyEvent.VK_DOWN:
-	        	downPressed = true;
+	        	isDownPressed = true;
 	        	break;
 	        case KeyEvent.VK_LEFT:
-	        	leftPressed = true;
+	        	isLeftPressed = true;
 	        	break;
 	        case KeyEvent.VK_RIGHT:
-	        	rightPressed = true;
+	        	isRightPressed = true;
 	        	break;
 	        case KeyEvent.VK_SPACE:
-	        	spacePressed = true;
+	        	isSpacePressed = true;
 	        	break;
 		}
 	}
@@ -54,26 +54,26 @@ public class Operation implements KeyListener{
 	        	upPressed = false;
 	        	break;
 	        case KeyEvent.VK_DOWN:
-	        	downPressed = false;
+	        	isDownPressed = false;
 	        	break;
 	        case KeyEvent.VK_LEFT:
-	        	leftPressed = false;
+	        	isLeftPressed = false;
 	        	break;
 	        case KeyEvent.VK_RIGHT:
-	        	rightPressed = false;
+	        	isRightPressed = false;
 	        	break;
 	        case KeyEvent.VK_SPACE:
-	        	spacePressed = false;
+	        	isSpacePressed = false;
 	        	break;
 	    }
 	}
 	
 	final void operation(Player player) {
 	    player.setIsMovingUp(upPressed);
-	    player.setIsMovingDown(downPressed);
-	    player.setIsMovingLeft(leftPressed);
-	    player.setIsMovingRight(rightPressed);
-	    player.setIsFire(spacePressed);
+	    player.setIsMovingDown(isDownPressed);
+	    player.setIsMovingLeft(isLeftPressed);
+	    player.setIsMovingRight(isRightPressed);
+	    player.setIsFire(isSpacePressed);
 	}
 
 }

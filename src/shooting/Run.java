@@ -52,22 +52,20 @@ class Run {
 		
 		Stage stage = new Stage();
 		Player player = playerFactory.getObject();
-		int count = 0;
 		
 		while(true) {
-			if(stage.isEnemySpawnInterval(count)) {
+			if(stage.isEnemySpawn()) {
 				for(GameObject object : manager.getGameObjects()) {
-					if(!object.isRenderable() && object instanceof Enemy) {
+					if(object instanceof Enemy && !object.isRenderable()) {
 						Enemy enemy = (Enemy)object;
 						enemy.spawn();
-						stage.updateEnemySpawnCounter();
 						break;
 					}
 				}
 			}
-			if(player.isBulletSpawnInterval()) {
+			if(player.isBulletSpawn()) {
 				for(GameObject object : manager.getGameObjects()) {
-					if(!object.isRenderable() && object instanceof Bullet) {
+					if(object instanceof Bullet && !object.isRenderable()) {
 						Bullet bullet = (Bullet)object;
 						bullet.spawn(player.getX(), player.getY());
 						break;
@@ -77,7 +75,6 @@ class Run {
 			operation.operation(player);
 			manager.moveAllGameObjects();
 			render.rendering();
-			count ++;
 			try {
 				Thread.sleep(16);
 			} catch (InterruptedException e) {

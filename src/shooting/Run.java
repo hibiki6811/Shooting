@@ -24,11 +24,12 @@ class Run {
 	final void runGame() {
 		myFrame.createFrame();
 		myFrame.setPanel(render.getPanel());
+		Operation operation = new Operation();
+		myFrame.setOperation(operation);
 		Stage stage = new Stage();
 		manager.addGameObject(new BackFactory().createGameObject());
 		PlayerFactory playerFactory = new PlayerFactory();
 		manager.addGameObject(playerFactory.createGameObject());
-		myFrame.setOperation(new Operation(playerFactory.getObject()));
 		GameObjectFactory enemyFactory = new EnemyFactory();
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
@@ -50,6 +51,7 @@ class Run {
 					}
 				}
 			}
+			operation.operation(playerFactory.getObject());
 			manager.moveAllGameObjects();
 			render.rendering();
 			count ++;

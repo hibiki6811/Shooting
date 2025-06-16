@@ -7,10 +7,11 @@ import object.Player;
 
 public class Operation implements KeyListener{
 	
-	private Player player;
+	private final int NOT_ENTERED = 0;
+	private int keyCode;
 	
-	Operation(Player player){
-		this.player = player;
+	Operation(){
+		keyCode = NOT_ENTERED;
 	}
 
 	@Override
@@ -20,7 +21,17 @@ public class Operation implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		switch(e.getKeyCode()) {
+		keyCode = e.getKeyCode();
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		keyCode = NOT_ENTERED;
+	}
+	
+	public void operation(Player player) {
+		switch(keyCode) {
 		case KeyEvent.VK_UP:
 			player.moveUp();
 			break;
@@ -33,16 +44,9 @@ public class Operation implements KeyListener{
 		case KeyEvent.VK_RIGHT:
 			player.moveRight();
 			break;
-		default:
-			
+		case NOT_ENTERED:
+			break;
 		}
-		
 	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		
-	}
-	
 
 }

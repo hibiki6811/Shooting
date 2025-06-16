@@ -2,8 +2,11 @@ package object;
 
 public class Player extends GameObject{
 	
+	private int speed;
+	
 	public Player(){
 		super("player", 500,300, 40, 50, 2);
+		speed = 5;
 	}
 
 	@Override
@@ -13,25 +16,25 @@ public class Player extends GameObject{
 	
 	public void moveUp() {
 		int y = getY();
-		y = y - 10;
+		y = y - speed;
 		setY(y);
 	}
 	
 	public void moveDown() {
 		int y = getY();
-		y = y + 10;
+		y = y + speed;
 		setY(y);
 	}
 	
 	public void moveLeft() {
 		int x = getX();
-		x = x - 10;
+		x = x - speed;
 		setX(x);
 	}
 	
 	public void moveRight() {
 		int x = getX();
-		x = x + 10;
+		x = x + speed;
 		setX(x);
 	}
 

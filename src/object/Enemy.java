@@ -7,7 +7,7 @@ public class Enemy extends GameObject {
 	private Random random;
 	
 	public Enemy() {
-		super("enemy", 0, -100, 40, 50, 2, "enemy");
+		super("enemy", 0, -100, 40, 50, 3, "enemy");
 		random = new Random();
 	}
 	
@@ -22,7 +22,6 @@ public class Enemy extends GameObject {
 		if(isRenderable()) {
 			int y = getY();
 			if(y >= 650) {
-				y = -100;
 				setIsRenderable(false);
 			}else {
 				y ++;
@@ -32,6 +31,7 @@ public class Enemy extends GameObject {
 	}
 
 	public  final void spawn() {
+		setY(-100);
 		setX(random.nextInt(750));
 		setIsRenderable(true);
 		

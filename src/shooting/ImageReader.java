@@ -18,6 +18,7 @@ class ImageReader {
 			images.put("back",ImageIO.read(getClass().getResource("/illust/back.jpg")));
 			images.put("player",ImageIO.read(getClass().getResource("/illust/player.png")));
 			images.put("enemy",ImageIO.read(getClass().getResource("/illust/enemy.png")));
+			images.put("bullet",ImageIO.read(getClass().getResource("/illust/bullet.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -6,14 +6,19 @@ import java.awt.event.KeyListener;
 import object.Player;
 
 public class Operation implements KeyListener{
-	
-	private final int NOT_ENTERED = 0;
-	private int keyCode;
-	private boolean isKeyPressed;
+
+	private boolean upPressed;
+	private boolean downPressed;
+	private boolean leftPressed;
+	private boolean rightPressed;
+	private boolean spacePressed;
 	
 	Operation(){
-		keyCode = NOT_ENTERED;
-		isKeyPressed = false;
+		upPressed = false;
+		downPressed = false;
+		leftPressed = false;
+		rightPressed = false;
+		spacePressed = false;
 	}
 
 	@Override
@@ -23,82 +28,52 @@ public class Operation implements KeyListener{
 
 	@Override
 	public final void keyPressed(KeyEvent e) {
-		keyCode = e.getKeyCode();
-		isKeyPressed = true;
+		switch(e.getKeyCode()) {
+	        case KeyEvent.VK_UP:
+	        	upPressed = true;
+	        	break;
+	        case KeyEvent.VK_DOWN:
+	        	downPressed = true;
+	        	break;
+	        case KeyEvent.VK_LEFT:
+	        	leftPressed = true;
+	        	break;
+	        case KeyEvent.VK_RIGHT:
+	        	rightPressed = true;
+	        	break;
+	        case KeyEvent.VK_SPACE:
+	        	spacePressed = true;
+	        	break;
+		}
 	}
 
 	@Override
 	public final void keyReleased(KeyEvent e) {
-		keyCode = e.getKeyCode();
-		isKeyPressed = false;
+		 switch(e.getKeyCode()) {
+	        case KeyEvent.VK_UP:
+	        	upPressed = false;
+	        	break;
+	        case KeyEvent.VK_DOWN:
+	        	downPressed = false;
+	        	break;
+	        case KeyEvent.VK_LEFT:
+	        	leftPressed = false;
+	        	break;
+	        case KeyEvent.VK_RIGHT:
+	        	rightPressed = false;
+	        	break;
+	        case KeyEvent.VK_SPACE:
+	        	spacePressed = false;
+	        	break;
+	    }
 	}
 	
 	final void operation(Player player) {
-		if(isKeyPressed) {
-			switch(keyCode) {
-			case KeyEvent.VK_UP:
-				player.setIsMovingUp(true);
-				player.setIsMovingDown(false);
-				player.setIsMovingLeft(false);
-				player.setIsMovingRight(false);
-				break;
-			case KeyEvent.VK_DOWN:
-				player.setIsMovingDown(true);
-				player.setIsMovingUp(false);
-				player.setIsMovingLeft(false);
-				player.setIsMovingRight(false);
-				break;
-			case KeyEvent.VK_LEFT:
-				player.setIsMovingLeft(true);
-				player.setIsMovingUp(false);
-				player.setIsMovingDown(false);
-				player.setIsMovingRight(false);
-				break;
-			case KeyEvent.VK_RIGHT:
-				player.setIsMovingRight(true);
-				player.setIsMovingUp(false);
-				player.setIsMovingDown(false);
-				player.setIsMovingLeft(false);
-				break;
-			case KeyEvent.VK_SPACE:
-				player.setIsFire(true);
-				break;
-			case NOT_ENTERED:
-				break;
-			}
-		}else {
-			switch(keyCode) {
-			case KeyEvent.VK_UP:
-				player.setIsMovingUp(false);
-				break;
-			case KeyEvent.VK_DOWN:
-				player.setIsMovingDown(false);
-				break;
-			case KeyEvent.VK_LEFT:
-				player.setIsMovingLeft(false);
-				break;
-			case KeyEvent.VK_RIGHT:
-				player.setIsMovingRight(false);
-				break;
-			case KeyEvent.VK_SPACE:
-				player.setIsFire(false);
-				break;
-			case NOT_ENTERED:
-				break;
-			}
-		}
-		
-		/*
-		if(keyCode == KeyEvent.VK_SPACE) {
-			if(isKeyPressed) {
-				player.setIsFire(true);
-			}else {
-				player.setIsFire(false);
-			}
-		}else {
-			player.setIsFire(false);
-		}
-		*/
+	    player.setIsMovingUp(upPressed);
+	    player.setIsMovingDown(downPressed);
+	    player.setIsMovingLeft(leftPressed);
+	    player.setIsMovingRight(rightPressed);
+	    player.setIsFire(spacePressed);
 	}
 
 }

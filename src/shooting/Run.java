@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 import factory.BackFactory;
 import factory.EnemyFactory;
-import factory.GameObjectFactory;
 import factory.PlayerFactory;
 import object.Enemy;
 import object.GameObject;
@@ -14,31 +13,35 @@ class Run {
 	private MyFrame myFrame;
 	private Render render;
 	private GameObjectManager manager;
+	private Operation operation;
 	
 	Run(){
-		this.myFrame = new MyFrame(new JFrame());
-		this.render = new Render(new ImageReader());
-		this.manager = new GameObjectManager();
+		myFrame = new MyFrame(new JFrame());
+		render = new Render(new ImageReader());
+		manager = new GameObjectManager();
+		operation = new Operation();
 	}
 
 	final void runGame() {
 		myFrame.createFrame();
 		myFrame.setPanel(render.getPanel());
-		Operation operation = new Operation();
 		myFrame.setOperation(operation);
+		
 		Stage stage = new Stage();
 		manager.addGameObject(new BackFactory().createGameObject());
 		PlayerFactory playerFactory = new PlayerFactory();
 		manager.addGameObject(playerFactory.createGameObject());
-		GameObjectFactory enemyFactory = new EnemyFactory();
+		EnemyFactory enemyFactory = new EnemyFactory();
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.initializeAllGameObjects();
+		
 		render.setRenderGameObject(manager.getGameObjects());
 		render.sortGameObject();
+		
 		int count = 0;
 		while(true) {
 			if(stage.isEnemySpawnInterval(count)) {

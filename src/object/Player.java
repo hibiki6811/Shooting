@@ -12,7 +12,7 @@ public class Player extends GameObject{
 	private boolean isMovingRight;
 	
 	public Player(){
-		super("player", 500,300, 40, 50, 3);
+		super("player", 370,500, 40, 50, 3);
 		speed = 5;
 		bulletSpawnInterval = 30;
 		bulletSpawnCounter = 0;

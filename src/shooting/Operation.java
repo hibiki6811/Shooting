@@ -15,6 +15,7 @@ public class Operation implements KeyListener{
 	private boolean isLeftPressed;
 	private boolean isRightPressed;
 	private boolean isSpacePressed;
+	private boolean aaa;
 	
 	Operation(){
 		pressedKeyCode = 0;

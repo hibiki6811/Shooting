@@ -110,6 +110,37 @@ public class Operation implements KeyListener{
 	}
 	
 	final void operation(Player player) {
+		if(isUpPressed) {
+			if(!isDownPressed && !isLeftPressed && !isRightPressed) {
+				 player.setIsMovingUp(isUpPressed);
+			 }
+		}else if(!isUpPressed){
+			 player.setIsMovingUp(false);
+		}
+		if(isDownPressed) {
+			if(!isUpPressed && !isLeftPressed && !isRightPressed) {
+				 player.setIsMovingDown(isDownPressed);
+			 }
+		}else if(!isDownPressed) {
+			 player.setIsMovingDown(false);
+		}
+		if(isLeftPressed) {
+			if(!isUpPressed && !isDownPressed && !isRightPressed) {
+				 player.setIsMovingLeft(isLeftPressed);
+			 }
+		}else if(!isLeftPressed) {
+			 player.setIsMovingLeft(false);
+		}
+		if(isRightPressed) {
+			if(!isUpPressed && !isDownPressed && !isLeftPressed) {
+				 player.setIsMovingRight(isRightPressed);
+			 }
+		}else if(!isRightPressed) {
+			 player.setIsMovingRight(false);
+		}
+		player.setIsFire(isSpacePressed);
+		
+		/*
 		 if(pressedKeyCode == KeyEvent.VK_UP && !isDownPressed && !isLeftPressed && !isRightPressed) {
 			 player.setIsMovingUp(isUpPressed);
 		 }
@@ -145,6 +176,8 @@ public class Operation implements KeyListener{
 			 player.setIsFire(false);
 			 releasedKeyCode = NO_PRESSED_KEY;
 		 }
+		 */
+		 
 		/*
 	    player.setIsMovingUp(isUpPressed);
 	    player.setIsMovingDown(isDownPressed);

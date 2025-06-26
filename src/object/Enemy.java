@@ -1,14 +1,9 @@
 package object;
 
-import java.util.Random;
-
 public class Enemy extends GameObject {
-	
-	private Random random;
 	
 	public Enemy() {
 		super("enemy", 0, -100, 40, 50, 3, "enemy");
-		random = new Random();
 	}
 	
 	@Override
@@ -30,11 +25,10 @@ public class Enemy extends GameObject {
 		}
 	}
 
-	public  final void spawn() {
-		setY(-100);
-		setX(random.nextInt(750));
+	public  final void spawn(int x, int y) {
+		setY(x);
+		setX(y);
 		setIsRenderable(true);
-		
 	}
 
 }

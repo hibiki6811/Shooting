@@ -16,7 +16,7 @@ public class Operation implements KeyListener{
 	private boolean isRightPressed;
 	private boolean isSpacePressed;
 	
-	Operation(){
+	public Operation(){
 		pressedKeyCode = 0;
 		releasedKeyCode = 0;
 		isUpPressed = false;
@@ -109,74 +109,36 @@ public class Operation implements KeyListener{
 	    }
 	}
 	
-	final void operation(Player player) {
+	public final void operation(Player player) {
 		if(isUpPressed) {
 			if(!isDownPressed && !isLeftPressed && !isRightPressed) {
-				 player.setIsMovingUp(isUpPressed);
-			 }
-		}else if(!isUpPressed){
-			 player.setIsMovingUp(false);
+				player.setIsMovingUp(isUpPressed);
+			}
+		}else{
+			player.setIsMovingUp(false);
 		}
 		if(isDownPressed) {
 			if(!isUpPressed && !isLeftPressed && !isRightPressed) {
-				 player.setIsMovingDown(isDownPressed);
-			 }
-		}else if(!isDownPressed) {
-			 player.setIsMovingDown(false);
+				player.setIsMovingDown(isDownPressed);
+			}
+		}else{
+			player.setIsMovingDown(false);
 		}
 		if(isLeftPressed) {
 			if(!isUpPressed && !isDownPressed && !isRightPressed) {
-				 player.setIsMovingLeft(isLeftPressed);
-			 }
-		}else if(!isLeftPressed) {
-			 player.setIsMovingLeft(false);
+				player.setIsMovingLeft(isLeftPressed);
+			}
+		}else{
+			player.setIsMovingLeft(false);
 		}
 		if(isRightPressed) {
 			if(!isUpPressed && !isDownPressed && !isLeftPressed) {
 				 player.setIsMovingRight(isRightPressed);
-			 }
-		}else if(!isRightPressed) {
-			 player.setIsMovingRight(false);
+			}
+		}else{
+			player.setIsMovingRight(false);
 		}
 		player.setIsFire(isSpacePressed);
-		
-		/*
-		 if(pressedKeyCode == KeyEvent.VK_UP && !isDownPressed && !isLeftPressed && !isRightPressed) {
-			 player.setIsMovingUp(isUpPressed);
-		 }
-		 if(releasedKeyCode == KeyEvent.VK_UP) {
-			 player.setIsMovingUp(false);
-			 releasedKeyCode = NO_PRESSED_KEY;
-		 }
-		 if(pressedKeyCode == KeyEvent.VK_DOWN && !isUpPressed && !isLeftPressed && !isRightPressed) {
-			 player.setIsMovingDown(isDownPressed);
-		 }
-		 if(releasedKeyCode == KeyEvent.VK_DOWN) {
-			 player.setIsMovingDown(false);
-			 releasedKeyCode = NO_PRESSED_KEY;
-		 }
-		 if(pressedKeyCode == KeyEvent.VK_LEFT && !isUpPressed && !isDownPressed && !isRightPressed) {
-			 player.setIsMovingLeft(isLeftPressed);
-		 }
-		 if(releasedKeyCode == KeyEvent.VK_LEFT) {
-			 player.setIsMovingLeft(false);
-			 releasedKeyCode = NO_PRESSED_KEY;
-		 }
-		 if(pressedKeyCode == KeyEvent.VK_RIGHT && !isUpPressed && !isDownPressed && !isLeftPressed) {
-			 player.setIsMovingRight(isRightPressed);
-		 }
-		 if(releasedKeyCode == KeyEvent.VK_RIGHT) {
-			 player.setIsMovingRight(false);
-			 releasedKeyCode = NO_PRESSED_KEY;
-		 }
-		 if(pressedKeyCode == KeyEvent.VK_SPACE) {
-			 player.setIsFire(isSpacePressed);
-		 }
-		 if(releasedKeyCode == KeyEvent.VK_SPACE) {
-			 player.setIsFire(false);
-			 releasedKeyCode = NO_PRESSED_KEY;
-		 }
-		 */
 		 
 		/*
 	    player.setIsMovingUp(isUpPressed);

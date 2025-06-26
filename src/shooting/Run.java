@@ -3,29 +3,31 @@ package shooting;
 import javax.swing.JFrame;
 
 import factory.BackFactory;
-import factory.BulletFactory;
 import factory.EnemyFactory;
+import factory.PlayerBulletFactory;
 import factory.PlayerFactory;
-import object.Bullet;
-import object.Enemy;
-import object.GameObject;
+import manager.EnemyManager;
+import manager.GameObjectManager;
+import manager.PlayerBulletManager;
 import object.Player;
 
-class Run {
+public class Run {
 	
 	private MyFrame myFrame;
 	private Render render;
 	private GameObjectManager manager;
+	private GameObjectSpawn spawn;
 	private Operation operation;
 	
-	Run(){
+	public Run(){
 		myFrame = new MyFrame(new JFrame());
 		render = new Render(new ImageReader());
 		manager = new GameObjectManager();
+		spawn = new GameObjectSpawn(manager);
 		operation = new Operation();
 	}
 
-	final void runGame() {
+	public final void runGame() {
 		myFrame.createFrame();
 		myFrame.setPanel(render.getPanel());
 		myFrame.setOperation(operation);
@@ -39,7 +41,7 @@ class Run {
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
 		manager.addGameObject(enemyFactory.createGameObject());
-		BulletFactory bulletFactory = new BulletFactory();
+		PlayerBulletFactory bulletFactory = new PlayerBulletFactory();
 		manager.addGameObject(bulletFactory.createGameObject());
 		manager.addGameObject(bulletFactory.createGameObject());
 		manager.addGameObject(bulletFactory.createGameObject());
@@ -52,26 +54,12 @@ class Run {
 		
 		Stage stage = new Stage();
 		Player player = playerFactory.getObject();
+		PlayerBulletManager playerBulletManager = new PlayerBulletManager();
+		EnemyManager enemyManager = new EnemyManager();
 		
 		while(true) {
-			if(stage.isEnemySpawn()) {
-				for(GameObject object : manager.getGameObjects()) {
-					if(object instanceof Enemy && !object.isRenderable()) {
-						Enemy enemy = (Enemy)object;
-						enemy.spawn();
-						break;
-					}
-				}
-			}
-			if(player.isBulletSpawn()) {
-				for(GameObject object : manager.getGameObjects()) {
-					if(object instanceof Bullet && !object.isRenderable()) {
-						Bullet bullet = (Bullet)object;
-						bullet.spawn(player.getX(), player.getY());
-						break;
-					}
-				}
-			}
+			spawn.spawn(playerBulletManager, player);
+			spawn.spawn(enemyManager, stage);
 			operation.operation(player);
 			manager.moveAllGameObjects();
 			render.rendering();

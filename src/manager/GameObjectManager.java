@@ -1,19 +1,19 @@
-package shooting;
+package manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import object.GameObject;
 
-class GameObjectManager {
+public class GameObjectManager {
 	
 	private List<GameObject> gameObjects;
 	
-	GameObjectManager() {
+	public GameObjectManager() {
 		gameObjects = new ArrayList<>();
 	}
 	
-	final void addGameObject(GameObject object) {
+	public final void addGameObject(GameObject object) {
 		if(!gameObjects.contains(object)) {
 			gameObjects.add(object);
 		}else {
@@ -21,37 +21,37 @@ class GameObjectManager {
 		}
 	}
 	
-	final void addGameObjects(List<GameObject> objects) {
+	public final void addGameObjects(List<GameObject> objects) {
 		for(GameObject object : objects) {
 			addGameObject(object);
 		}
 	}
 	
-	final void showAllGameObjects() {
+	public final void showAllGameObjects() {
 		for(GameObject object : gameObjects) {
 			object.setIsRenderable(true);
 		}
 	}
 	
-	final void hideAlleGameObjects() {
+	public final void hideAlleGameObjects() {
 		for(GameObject object : gameObjects) {
 			object.setIsRenderable(false);
 		}
 	}
 	
-	final void moveAllGameObjects() {
+	public final void moveAllGameObjects() {
 		for(GameObject object : gameObjects) {
 			object.move();
 		}
 	}
 	
-	final void initializeAllGameObjects() {
+	public final void initializeAllGameObjects() {
 		for(GameObject object : gameObjects) {
 			object.initialize();
 		}
 	}
 	
-	final List<GameObject> getGameObjects(){
+	public final List<GameObject> getGameObjects(){
 	    return gameObjects;
 	}
 	

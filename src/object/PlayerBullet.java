@@ -1,10 +1,10 @@
 package object;
 
-public class Bullet extends GameObject{
+public class PlayerBullet extends GameObject{
 	
 	private int speed;
 
-	public Bullet() {
+	public PlayerBullet() {
 		super("bullet", 0, 0, 15, 40, 2);
 		speed = 7;
 	}

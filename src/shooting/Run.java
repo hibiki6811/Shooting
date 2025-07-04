@@ -8,9 +8,7 @@ import factory.PlayerBulletFactory;
 import factory.PlayerFactory;
 import manager.EnemyManager;
 import manager.GameObjectManager;
-import manager.PlayerBulletManager;
 import object.GameObject;
-import object.Player;
 
 public class Run {
 	
@@ -24,7 +22,7 @@ public class Run {
 		myFrame = new MyFrame(new JFrame());
 		render = new Render(new ImageReader());
 		manager = new GameObjectManager();
-		spawn = new GameObjectSpawn(manager);
+		spawn = new GameObjectSpawn();
 		control = new Control();
 	}
 
@@ -53,9 +51,9 @@ public class Run {
 		render.setRenderGameObject(manager.getGameObjects());
 		render.sortGameObject();
 		
+		spawn.initialize(manager);
+		
 		Stage stage = new Stage();
-		Player player = playerFactory.getObject();
-		PlayerBulletManager playerBulletManager = new PlayerBulletManager();
 		EnemyManager enemyManager = new EnemyManager();
 		
 		while(true) {

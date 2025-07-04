@@ -11,22 +11,23 @@ import object.PlayerBullet;
 
 public class GameObjectSpawn {
 	
-	private GameObjectManager manager;
+	private Player player;
 	private Random random;
 	
-	public GameObjectSpawn(GameObjectManager manager) {
-		this.manager = manager;
+	public GameObjectSpawn() {
 		random = new Random();
 	}
 	
-	public final void spawn(PlayerBullet bullet) {
-		Player player = null;
+	public void initialize(GameObjectManager manager) {
 		for(GameObject object : manager.getGameObjects()) {
 			if(object instanceof Player) {
 				player = (Player)object;
 				
 			}
 		}
+	}
+	
+	public final void spawn(PlayerBullet bullet) {
 		if(player.getBulletSpawnCounter() % player.getBulletSpawnInterval() == 0) {
 			bullet.setX(player.getX() + 13);
 			bullet.setY(player.getY());

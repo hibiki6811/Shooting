@@ -1,9 +1,13 @@
 package object;
 
-public class Player extends GameObject{
+import shooting.Control;
+import shooting.Controllable;
+
+public class Player extends GameObject implements Controllable{
 	
 	private int speed;
 	private int bulletSpawnInterval;
+	private int bulletSpawnCounter;
 	private boolean isFire;
 	private boolean isMovingUp;
 	private boolean isMovingDown;
@@ -14,6 +18,7 @@ public class Player extends GameObject{
 		super("player", 370,500, 40, 50, 3);
 		speed = 5;
 		bulletSpawnInterval = 30;
+		bulletSpawnCounter = 0;
 		isFire = false;
 		isMovingUp = false;
 		isMovingDown = false;
@@ -44,9 +49,19 @@ public class Player extends GameObject{
 			if(isMovingRight) {
 				x = x + speed;
 			}
+			if(isFire) {
+				bulletSpawnCounter++;
+			}else {
+				bulletSpawnCounter = 0;
+			}
 			setX(x);
 			setY(y);
 		}
+	}
+	
+	@Override
+	public void control(Control control) {
+		control.control(this);
 	}
 	
 	public final void setIsMovingUp(boolean isMovingUP) {
@@ -76,5 +91,10 @@ public class Player extends GameObject{
 	public final int getBulletSpawnInterval(){
 		return bulletSpawnInterval;
 	}
+	
+	public final int getBulletSpawnCounter() {
+		return bulletSpawnCounter;
+	}
+
 
 }

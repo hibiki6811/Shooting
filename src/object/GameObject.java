@@ -2,7 +2,6 @@ package object;
 
 public abstract class GameObject {
 	
-	private String imageName;
 	private String type;
 	private int x;
 	private int y;
@@ -11,8 +10,8 @@ public abstract class GameObject {
 	private int depth;
 	private boolean isRenderable;
 
-	public GameObject(String imageName, int x, int y, int width, int height, int depth) {
-		this.imageName = imageName;
+	public GameObject(String type, int x, int y, int width, int height, int depth) {
+		this.type = type;
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -20,25 +19,6 @@ public abstract class GameObject {
 		this.depth = depth;
 		type = "";
 		isRenderable = false;
-	}
-	
-	public GameObject(String imageName, int x, int y, int width, int height, int depth, String type) {
-		this.imageName = imageName;
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.depth = depth;
-		this.type = type;
-		isRenderable = false;
-	}
-	
-	public final String getImageName() {
-		return imageName;
-	}
-	
-	public final void setImageName(String name) {
-		this.imageName = name;
 	}
 	
 	public final String getType() {

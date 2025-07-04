@@ -3,7 +3,7 @@ package object;
 public class Enemy extends GameObject {
 	
 	public Enemy() {
-		super("enemy", 0, -100, 40, 50, 3, "enemy");
+		super("enemy", 0, -100, 40, 50, 3);
 	}
 	
 	@Override

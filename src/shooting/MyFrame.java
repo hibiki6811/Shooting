@@ -23,7 +23,7 @@ class MyFrame {
 		jFrame.add(panel);
 	}
 	
-	final void setOperation(Operation operation) {
+	final void setOperation(Control operation) {
 		jFrame.addKeyListener(operation);
 	}
 	

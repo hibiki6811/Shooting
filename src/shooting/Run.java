@@ -9,6 +9,7 @@ import factory.PlayerFactory;
 import manager.EnemyManager;
 import manager.GameObjectManager;
 import manager.PlayerBulletManager;
+import object.GameObject;
 import object.Player;
 
 public class Run {
@@ -17,20 +18,20 @@ public class Run {
 	private Render render;
 	private GameObjectManager manager;
 	private GameObjectSpawn spawn;
-	private Operation operation;
+	private Control control;
 	
 	public Run(){
 		myFrame = new MyFrame(new JFrame());
 		render = new Render(new ImageReader());
 		manager = new GameObjectManager();
 		spawn = new GameObjectSpawn(manager);
-		operation = new Operation();
+		control = new Control();
 	}
 
 	public final void runGame() {
 		myFrame.createFrame();
 		myFrame.setPanel(render.getPanel());
-		myFrame.setOperation(operation);
+		myFrame.setOperation(control);
 		
 		manager.addGameObject(new BackFactory().createGameObject());
 		PlayerFactory playerFactory = new PlayerFactory();
@@ -58,9 +59,18 @@ public class Run {
 		EnemyManager enemyManager = new EnemyManager();
 		
 		while(true) {
-			spawn.spawn(playerBulletManager, player);
+			for(GameObject object : manager.getGameObjects()) {
+				if(object instanceof Spawnable) {
+					Spawnable spawnObject = (Spawnable)object;
+					spawnObject.spawn(spawn);
+				}
+				if(object instanceof Controllable) {
+					Controllable controlObject = (Controllable)object;
+					controlObject.control(control);
+				}
+			}
 			spawn.spawn(enemyManager, stage);
-			operation.operation(player);
+			control.control(player);
 			manager.moveAllGameObjects();
 			render.rendering();
 			try {

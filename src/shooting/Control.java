@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 import object.Player;
 
-public class Operation implements KeyListener{
+public class Control implements KeyListener{
 
 	private final int NO_PRESSED_KEY = 0;
 	private int pressedKeyCode;
@@ -16,7 +16,7 @@ public class Operation implements KeyListener{
 	private boolean isRightPressed;
 	private boolean isSpacePressed;
 	
-	public Operation(){
+	public Control(){
 		pressedKeyCode = 0;
 		releasedKeyCode = 0;
 		isUpPressed = false;
@@ -109,7 +109,7 @@ public class Operation implements KeyListener{
 	    }
 	}
 	
-	public final void operation(Player player) {
+	public final void control(Player player) {
 		if(isUpPressed) {
 			if(!isDownPressed && !isLeftPressed && !isRightPressed) {
 				player.setIsMovingUp(isUpPressed);

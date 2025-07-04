@@ -63,7 +63,7 @@ class Render {
 			//List<GameObject> copyObjects = new ArrayList<>(renderObjects); //ConcurrentModificationException防止.
 			
 			for(GameObject object : renderObjects) {
-				String imageName = object.getImageName();
+				String imageName = object.getType();
 				int x = object.getX();
 				int y = object.getY();
 				int width = object.getWidth();

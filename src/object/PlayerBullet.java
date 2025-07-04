@@ -1,6 +1,9 @@
 package object;
 
-public class PlayerBullet extends GameObject{
+import shooting.GameObjectSpawn;
+import shooting.Spawnable;
+
+public class PlayerBullet extends GameObject implements Spawnable{
 	
 	private int speed;
 
@@ -29,10 +32,11 @@ public class PlayerBullet extends GameObject{
 		
 	}
 	
-	public void spawn(int x, int y) {
-			setX(x + 13);
-			setY(y);
-			setIsRenderable(true);
+	@Override
+	public void spawn(GameObjectSpawn spawn) {
+		if(!isRenderable()) {
+			spawn.spawn(this);	
+		}
 	}
 	
 	

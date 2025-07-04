@@ -4,7 +4,6 @@ import java.util.Random;
 
 import manager.EnemyManager;
 import manager.GameObjectManager;
-import manager.PlayerBulletManager;
 import object.Enemy;
 import object.GameObject;
 import object.Player;
@@ -20,15 +19,18 @@ public class GameObjectSpawn {
 		random = new Random();
 	}
 	
-	public final void spawn(PlayerBulletManager playerBulletManager, Player player) {
-		if(playerBulletManager.isBulletSpawn(player.getBulletSpawnInterval(), player.getIsFire())) {
-			for(GameObject object : manager.getGameObjects()) {
-				if(object instanceof PlayerBullet && !object.isRenderable()) {
-					PlayerBullet bullet = (PlayerBullet)object;
-					bullet.spawn(player.getX(), player.getY());
-					break;
-				}
+	public final void spawn(PlayerBullet bullet) {
+		Player player = null;
+		for(GameObject object : manager.getGameObjects()) {
+			if(object instanceof Player) {
+				player = (Player)object;
+				
 			}
+		}
+		if(player.getBulletSpawnCounter() % player.getBulletSpawnInterval() == 0) {
+			bullet.setX(player.getX() + 13);
+			bullet.setY(player.getY());
+			bullet.setIsRenderable(true);
 		}
 	}
 	
@@ -43,5 +45,6 @@ public class GameObjectSpawn {
 			}
 		}
 	}
+	
 
 }

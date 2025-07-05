@@ -6,7 +6,6 @@ import factory.BackFactory;
 import factory.EnemyFactory;
 import factory.PlayerBulletFactory;
 import factory.PlayerFactory;
-import manager.EnemyManager;
 import manager.GameObjectManager;
 import object.GameObject;
 
@@ -51,10 +50,8 @@ public class Run {
 		render.setRenderGameObject(manager.getGameObjects());
 		render.sortGameObject();
 		
-		spawn.initialize(manager);
-		
 		Stage stage = new Stage();
-		EnemyManager enemyManager = new EnemyManager();
+		spawn.initialize(manager, stage);
 		
 		while(true) {
 			for(GameObject object : manager.getGameObjects()) {
@@ -67,8 +64,7 @@ public class Run {
 					controlObject.control(control);
 				}
 			}
-			spawn.spawn(enemyManager, stage);
-			control.control(player);
+			stage.addEnemySpaenCounter();
 			manager.moveAllGameObjects();
 			render.rendering();
 			try {

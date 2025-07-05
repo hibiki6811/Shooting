@@ -34,9 +34,7 @@ public class PlayerBullet extends GameObject implements Spawnable{
 	
 	@Override
 	public void spawn(GameObjectSpawn spawn) {
-		if(!isRenderable()) {
-			spawn.spawn(this);	
-		}
+		spawn.spawn(this);	
 	}
 	
 	

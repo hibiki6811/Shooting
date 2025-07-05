@@ -7,7 +7,6 @@ import object.Player;
 
 public class Control implements KeyListener{
 
-	private final int NO_PRESSED_KEY = 0;
 	private int pressedKeyCode;
 	private int releasedKeyCode;
 	private boolean isUpPressed;

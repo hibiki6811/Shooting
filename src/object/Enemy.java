@@ -1,6 +1,9 @@
 package object;
 
-public class Enemy extends GameObject {
+import shooting.GameObjectSpawn;
+import shooting.Spawnable;
+
+public class Enemy extends GameObject implements Spawnable{
 	
 	public Enemy() {
 		super("enemy", 0, -100, 40, 50, 3);
@@ -25,10 +28,9 @@ public class Enemy extends GameObject {
 		}
 	}
 
-	public  final void spawn(int x, int y) {
-		setY(x);
-		setX(y);
-		setIsRenderable(true);
+	@Override
+	public  final void spawn(GameObjectSpawn spawn) {
+		spawn.spawn(this);
 	}
 
 }

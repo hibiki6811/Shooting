@@ -64,6 +64,7 @@ public class Run {
 					controlObject.control(control);
 				}
 			}
+			spawn.resetSpawnable();
 			stage.addEnemySpaenCounter();
 			manager.moveAllGameObjects();
 			render.rendering();

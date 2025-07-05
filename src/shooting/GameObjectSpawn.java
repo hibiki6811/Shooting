@@ -13,9 +13,13 @@ public class GameObjectSpawn {
 	private Player player;
 	private Stage stage;
 	private Random random;
+	private boolean isBulletSpawnable;
+	private boolean isEnemySpawnable;
 	
 	public GameObjectSpawn() {
 		random = new Random();
+		isBulletSpawnable = true;
+		isEnemySpawnable = true;
 	}
 	
 	public void initialize(GameObjectManager manager, Stage stage) {
@@ -29,20 +33,26 @@ public class GameObjectSpawn {
 	}
 	
 	public final void spawn(PlayerBullet bullet) {
-		if(!bullet.isRenderable() && player.getBulletSpawnCounter() % player.getBulletSpawnInterval() == 0 && player.getIsFire()) {
+		if(isBulletSpawnable && !bullet.isRenderable() && player.getBulletSpawnCounter() % player.getBulletSpawnInterval() == 0 && player.getIsFire()) {
 			bullet.setX(player.getX() + 13);
 			bullet.setY(player.getY());
 			bullet.setIsRenderable(true);
-			player.resetBulletSpawnCounter();
+			isBulletSpawnable = false;
 		}
 	}
 	
 	public final void spawn(Enemy enemy) {
-		if(!enemy.isRenderable() && stage.getEnemySpawnCounter() % stage.getEnemySpawnInterval() == 0) {
+		if(isEnemySpawnable && !enemy.isRenderable() && stage.getEnemySpawnCounter() % stage.getEnemySpawnInterval() == 0) {
 			enemy.setX(random.nextInt(750));
 			enemy.setY(-100);
 			enemy.setIsRenderable(true);
+			isEnemySpawnable = false;
 		}
+	}
+	
+	public final void resetSpawnable() {
+		isBulletSpawnable = true;
+		isEnemySpawnable = true;
 	}
 	
 

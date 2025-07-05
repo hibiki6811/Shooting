@@ -51,6 +51,8 @@ public class Player extends GameObject implements Controllable{
 			}
 			if(isFire) {
 				bulletSpawnCounter++;
+			}else {
+				bulletSpawnCounter = 0;
 			}
 			setX(x);
 			setY(y);
@@ -93,10 +95,5 @@ public class Player extends GameObject implements Controllable{
 	public final int getBulletSpawnCounter() {
 		return bulletSpawnCounter;
 	}
-	
-	public final void resetBulletSpawnCounter() {
-		bulletSpawnCounter = 0;
-	}
-
 
 }

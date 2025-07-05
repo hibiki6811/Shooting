@@ -16,6 +16,7 @@ public class Run {
 	private GameObjectManager manager;
 	private GameObjectSpawn spawn;
 	private Control control;
+	private RoopCount count;
 	
 	public Run(){
 		myFrame = new MyFrame(new JFrame());
@@ -23,6 +24,7 @@ public class Run {
 		manager = new GameObjectManager();
 		spawn = new GameObjectSpawn();
 		control = new Control();
+		count = new RoopCount();
 	}
 
 	public final void runGame() {
@@ -57,17 +59,17 @@ public class Run {
 			for(GameObject object : manager.getGameObjects()) {
 				if(object instanceof Spawnable) {
 					Spawnable spawnObject = (Spawnable)object;
-					spawnObject.spawn(spawn);
+					spawnObject.spawn(spawn, count);
 				}
 				if(object instanceof Controllable) {
 					Controllable controlObject = (Controllable)object;
 					controlObject.control(control);
 				}
 			}
-			spawn.resetSpawnable();
 			stage.addEnemySpaenCounter();
 			manager.moveAllGameObjects();
 			render.rendering();
+			count.addRoopCount();
 			try {
 				Thread.sleep(16);
 			} catch (InterruptedException e) {

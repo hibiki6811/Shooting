@@ -1,6 +1,7 @@
 package object;
 
 import shooting.GameObjectSpawn;
+import shooting.RoopCount;
 import shooting.Spawnable;
 
 public class PlayerBullet extends GameObject implements Spawnable{
@@ -33,8 +34,8 @@ public class PlayerBullet extends GameObject implements Spawnable{
 	}
 	
 	@Override
-	public void spawn(GameObjectSpawn spawn) {
-		spawn.spawn(this);	
+	public void spawn(GameObjectSpawn spawn, RoopCount count) {
+		spawn.spawn(this, count);	
 	}
 	
 	

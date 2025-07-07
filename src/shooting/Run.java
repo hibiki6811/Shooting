@@ -8,23 +8,25 @@ import factory.PlayerBulletFactory;
 import factory.PlayerFactory;
 import manager.GameObjectManager;
 import object.GameObject;
+import process.Control;
+import process.Controllable;
+import process.Spawn;
+import process.Spawnable;
 
 public class Run {
 	
 	private MyFrame myFrame;
 	private Render render;
 	private GameObjectManager manager;
-	private GameObjectSpawn spawn;
+	private Spawn spawn;
 	private Control control;
-	private RoopCount count;
 	
 	public Run(){
 		myFrame = new MyFrame(new JFrame());
 		render = new Render(new ImageReader());
 		manager = new GameObjectManager();
-		spawn = new GameObjectSpawn();
+		spawn = new Spawn();
 		control = new Control();
-		count = new RoopCount();
 	}
 
 	public final void runGame() {
@@ -69,7 +71,6 @@ public class Run {
 			stage.addEnemySpaenCounter();
 			manager.moveAllGameObjects();
 			render.rendering();
-			count.addRoopCount();
 			try {
 				Thread.sleep(16);
 			} catch (InterruptedException e) {

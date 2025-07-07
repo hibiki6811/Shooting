@@ -1,4 +1,4 @@
-package shooting;
+package process;
 
 public interface Controllable {
 	

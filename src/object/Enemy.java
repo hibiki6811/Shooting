@@ -1,7 +1,7 @@
 package object;
 
-import shooting.GameObjectSpawn;
-import shooting.Spawnable;
+import process.Spawn;
+import process.Spawnable;
 
 public class Enemy extends GameObject implements Spawnable{
 	
@@ -32,7 +32,7 @@ public class Enemy extends GameObject implements Spawnable{
 	}
 
 	@Override
-	public  final void spawn(GameObjectSpawn spawn) {
+	public  final void spawn(Spawn spawn) {
 		spawn.spawn(this);
 	}
 	

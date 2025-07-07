@@ -1,7 +1,7 @@
 package object;
 
-import shooting.GameObjectSpawn;
-import shooting.Spawnable;
+import process.Spawn;
+import process.Spawnable;
 
 public class PlayerBullet extends GameObject implements Spawnable{
 
@@ -35,7 +35,7 @@ public class PlayerBullet extends GameObject implements Spawnable{
 	}
 	
 	@Override
-	public void spawn(GameObjectSpawn spawn) {
+	public void spawn(Spawn spawn) {
 		spawn.spawn(this);	
 	}
 	

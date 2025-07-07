@@ -3,6 +3,8 @@ package shooting;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import process.Control;
+
 class MyFrame {
 	
 	private JFrame jFrame;

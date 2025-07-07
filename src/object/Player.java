@@ -1,7 +1,7 @@
 package object;
 
-import shooting.Control;
-import shooting.Controllable;
+import process.Control;
+import process.Controllable;
 
 public class Player extends GameObject implements Controllable{
 	

@@ -8,12 +8,14 @@ public class Stage {
 	private Map<String, Integer> stageObjectInfo;
 	private int enemySpawnInterval;
 	private int enemySpawnCounter;
+	private int numEnemies;
 	
 	public Stage(){
 		stageObjectInfo = new HashMap<>();;
 		stageObjectInfo.put("enemy", 10);
 		enemySpawnInterval = 200;
 		enemySpawnCounter = 0;
+		numEnemies = 5;
 	}
 	
 	public Stage(Map<String, Integer> stageObjectInfo){
@@ -32,8 +34,12 @@ public class Stage {
 		enemySpawnCounter++;
 	}
 	
-	public int getEnemySpawnCounter() {
+	public final int getEnemySpawnCounter() {
 		return enemySpawnCounter;
+	}
+	
+	public final int getNumEnemies() {
+		return numEnemies;
 	}
 	
 }

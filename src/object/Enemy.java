@@ -1,13 +1,15 @@
 package object;
 
 import shooting.GameObjectSpawn;
-import shooting.RoopCount;
 import shooting.Spawnable;
 
 public class Enemy extends GameObject implements Spawnable{
 	
-	public Enemy() {
+	private int num;
+	
+	public Enemy(int num) {
 		super("enemy", 0, -100, 40, 50, 3);
+		this.num = num;
 	}
 	
 	@Override
@@ -30,8 +32,12 @@ public class Enemy extends GameObject implements Spawnable{
 	}
 
 	@Override
-	public  final void spawn(GameObjectSpawn spawn, RoopCount count) {
-		spawn.spawn(this, count);
+	public  final void spawn(GameObjectSpawn spawn) {
+		spawn.spawn(this);
+	}
+	
+	public final int getNum() {
+		return num;
 	}
 
 }

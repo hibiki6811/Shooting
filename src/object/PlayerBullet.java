@@ -1,15 +1,16 @@
 package object;
 
 import shooting.GameObjectSpawn;
-import shooting.RoopCount;
 import shooting.Spawnable;
 
 public class PlayerBullet extends GameObject implements Spawnable{
-	
+
+	private int num;
 	private int speed;
 
-	public PlayerBullet() {
+	public PlayerBullet(int num) {
 		super("bullet", 0, 0, 15, 40, 2);
+		this.num = num;
 		speed = 7;
 	}
 
@@ -34,10 +35,12 @@ public class PlayerBullet extends GameObject implements Spawnable{
 	}
 	
 	@Override
-	public void spawn(GameObjectSpawn spawn, RoopCount count) {
-		spawn.spawn(this, count);	
+	public void spawn(GameObjectSpawn spawn) {
+		spawn.spawn(this);	
 	}
 	
-	
+	public final int getNum() {
+		return num;
+	}
 
 }

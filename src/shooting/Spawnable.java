@@ -2,6 +2,6 @@ package shooting;
 
 public interface Spawnable {
 	
-	public abstract void spawn(GameObjectSpawn spawn, RoopCount count);
+	public abstract void spawn(GameObjectSpawn spawn);
 
 }

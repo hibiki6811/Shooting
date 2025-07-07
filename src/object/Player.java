@@ -8,6 +8,7 @@ public class Player extends GameObject implements Controllable{
 	private int speed;
 	private int bulletSpawnInterval;
 	private int bulletSpawnCounter;
+	private int numBullets;
 	private boolean isFire;
 	private boolean isMovingUp;
 	private boolean isMovingDown;
@@ -19,6 +20,7 @@ public class Player extends GameObject implements Controllable{
 		speed = 5;
 		bulletSpawnInterval = 30;
 		bulletSpawnCounter = 0;
+		numBullets = 5;
 		isFire = false;
 		isMovingUp = false;
 		isMovingDown = false;
@@ -94,6 +96,10 @@ public class Player extends GameObject implements Controllable{
 	
 	public final int getBulletSpawnCounter() {
 		return bulletSpawnCounter;
+	}
+	
+	public final int getNumBullets() {
+		return numBullets;
 	}
 
 }

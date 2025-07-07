@@ -1,13 +1,16 @@
 package factory;
 
-import object.PlayerBullet;
 import object.GameObject;
+import object.PlayerBullet;
 
 public class PlayerBulletFactory extends GameObjectFactory{
+	
+	private int count;
 
 	@Override
 	public GameObject createGameObject() {
-		return new PlayerBullet();
+		count++;
+		return new PlayerBullet(count);
 	}
 
 }

@@ -59,7 +59,7 @@ public class Run {
 			for(GameObject object : manager.getGameObjects()) {
 				if(object instanceof Spawnable) {
 					Spawnable spawnObject = (Spawnable)object;
-					spawnObject.spawn(spawn, count);
+					spawnObject.spawn(spawn);
 				}
 				if(object instanceof Controllable) {
 					Controllable controlObject = (Controllable)object;

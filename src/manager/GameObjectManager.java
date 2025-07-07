@@ -39,12 +39,6 @@ public class GameObjectManager {
 		}
 	}
 	
-	public final void moveAllGameObjects() {
-		for(GameObject object : gameObjects) {
-			object.move();
-		}
-	}
-	
 	public final void initializeAllGameObjects() {
 		for(GameObject object : gameObjects) {
 			object.initialize();

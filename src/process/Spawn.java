@@ -35,7 +35,8 @@ public class Spawn {
 	
 	public final void spawn(PlayerBullet bullet) {
 		if(!player.getIsFire()) return;
-		if(player.getBulletSpawnCounter() % player.getBulletSpawnInterval() != 0) return;
+		if(player.getBulletSpawnCounter() == 1) {
+		}else if(player.getBulletSpawnCounter() % player.getBulletSpawnInterval() != 0) return;
 		if(isBulletSpawn && !bullet.isRenderable()) {
 			setSpawnPoint(bullet, player.getX() + 13,  player.getY());
 			isBulletSpawn = false;

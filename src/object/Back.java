@@ -7,12 +7,6 @@ public class Back extends GameObject{
 	}
 
 	@Override
-	public void move() {
-		
-		
-	}
-
-	@Override
 	public void initialize() {
 		setIsRenderable(true);
 		

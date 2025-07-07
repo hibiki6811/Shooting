@@ -10,6 +10,8 @@ import manager.GameObjectManager;
 import object.GameObject;
 import process.Control;
 import process.Controllable;
+import process.Movable;
+import process.Move;
 import process.Spawn;
 import process.Spawnable;
 
@@ -18,6 +20,7 @@ public class Run {
 	private MyFrame myFrame;
 	private Render render;
 	private GameObjectManager manager;
+	private Move move;
 	private Spawn spawn;
 	private Control control;
 	
@@ -25,6 +28,7 @@ public class Run {
 		myFrame = new MyFrame(new JFrame());
 		render = new Render(new ImageReader());
 		manager = new GameObjectManager();
+		move = new Move();
 		spawn = new Spawn();
 		control = new Control();
 	}
@@ -67,9 +71,12 @@ public class Run {
 					Controllable controlObject = (Controllable)object;
 					controlObject.control(control);
 				}
+				if(object instanceof Movable) {
+					Movable movableObject = (Movable)object;
+					movableObject.move(move);
+				}
 			}
 			stage.addEnemySpaenCounter();
-			manager.moveAllGameObjects();
 			render.rendering();
 			try {
 				Thread.sleep(16);

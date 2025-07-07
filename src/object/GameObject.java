@@ -79,6 +79,4 @@ public abstract class GameObject {
 	
 	public abstract void initialize();
 	
-	public abstract void move();
-	
 }

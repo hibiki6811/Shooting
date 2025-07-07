@@ -1,9 +1,11 @@
 package object;
 
+import process.Movable;
+import process.Move;
 import process.Spawn;
 import process.Spawnable;
 
-public class Enemy extends GameObject implements Spawnable{
+public class Enemy extends GameObject implements Movable, Spawnable{
 	
 	private int num;
 	
@@ -19,16 +21,8 @@ public class Enemy extends GameObject implements Spawnable{
 	}
 	
 	@Override
-	public final void move() {
-		if(isRenderable()) {
-			int y = getY();
-			if(y >= 650) {
-				setIsRenderable(false);
-			}else {
-				y ++;
-			}
-			setY(y);
-		}
+	public final void move(Move move) {
+		move.move(this);
 	}
 
 	@Override

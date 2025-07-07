@@ -2,8 +2,10 @@ package object;
 
 import process.Control;
 import process.Controllable;
+import process.Movable;
+import process.Move;
 
-public class Player extends GameObject implements Controllable{
+public class Player extends GameObject implements Movable, Controllable{
 	
 	private int speed;
 	private int bulletSpawnInterval;
@@ -35,30 +37,8 @@ public class Player extends GameObject implements Controllable{
 	}
 
 	@Override
-	public final void move() {
-		if(isRenderable()) {
-			int x = getX();
-			int y = getY();
-			if(isMovingUp) {
-				y = y - speed;
-			}
-			if(isMovingDown) {
-				y = y + speed;
-			}
-			if(isMovingLeft) {
-				x = x - speed;
-			}
-			if(isMovingRight) {
-				x = x + speed;
-			}
-			if(isFire) {
-				bulletSpawnCounter++;
-			}else {
-				bulletSpawnCounter = 0;
-			}
-			setX(x);
-			setY(y);
-		}
+	public final void move(Move move) {
+		move.move(this);
 	}
 	
 	@Override
@@ -70,16 +50,32 @@ public class Player extends GameObject implements Controllable{
 		this.isMovingUp = isMovingUP;
 	}
 	
+	public final boolean getIsMovingUp() {
+		return isMovingUp;
+	}
+	
 	public final void setIsMovingDown(boolean isMovingDown) {
 		this.isMovingDown = isMovingDown;
+	}
+	
+	public final boolean getIsMovingDown() {
+		return isMovingDown;
 	}
 	
 	public final void setIsMovingLeft(boolean isMovingLeft) {
 		this.isMovingLeft = isMovingLeft;
 	}
 	
+	public final boolean getIsMovingLeft() {
+		return isMovingLeft;
+	}
+	
 	public final void setIsMovingRight(boolean isMovingRight) {
 		this.isMovingRight = isMovingRight;
+	}
+	
+	public final boolean getIsMovingRight() {
+		return isMovingRight;
 	}
 	
 	public final void setIsFire(boolean isFire) {
@@ -90,8 +86,20 @@ public class Player extends GameObject implements Controllable{
 		return isFire;
 	}
 	
+	public final void setBulletSpawnInterval(int interval) {
+		this.bulletSpawnInterval = interval;
+	}
+	
 	public final int getBulletSpawnInterval(){
 		return bulletSpawnInterval;
+	}
+	
+	public final void addBulletSpawnCounter() {
+		this.bulletSpawnCounter++;
+	}
+	
+	public final void setBulletSpawnCounter(int count) {
+		this.bulletSpawnCounter = count;
 	}
 	
 	public final int getBulletSpawnCounter() {
@@ -100,6 +108,14 @@ public class Player extends GameObject implements Controllable{
 	
 	public final int getNumBullets() {
 		return numBullets;
+	}
+	
+	public final void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	public final int getSpeed() {
+		return speed;
 	}
 
 }

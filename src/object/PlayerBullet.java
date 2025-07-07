@@ -1,9 +1,11 @@
 package object;
 
+import process.Movable;
+import process.Move;
 import process.Spawn;
 import process.Spawnable;
 
-public class PlayerBullet extends GameObject implements Spawnable{
+public class PlayerBullet extends GameObject implements Movable, Spawnable{
 
 	private int num;
 	private int speed;
@@ -21,22 +23,21 @@ public class PlayerBullet extends GameObject implements Spawnable{
 	}
 
 	@Override
-	public void move() {
-		if(isRenderable()) {
-			int y = getY();
-			if(y <= -50) {
-				setIsRenderable(false);
-			}else {
-				y = y - speed;
-			}
-			setY(y);
-		}
-		
+	public void move(Move move) {
+		move.move(this);
 	}
 	
 	@Override
 	public void spawn(Spawn spawn) {
 		spawn.spawn(this);	
+	}
+	
+	public final void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	public final int getSpeed() {
+		return speed;
 	}
 	
 	public final int getNum() {
